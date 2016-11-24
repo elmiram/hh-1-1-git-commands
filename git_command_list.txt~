@@ -1,0 +1,33 @@
+    1  git init ./repoA
+    2  cd repoA
+    3  touch file{A,B}.txt
+    4  git add .
+    5  git commit -m '1st commit to repo A'
+    6  git branch branch1
+    7  cd ..
+    8  git clone repoA repoB
+    9  cd repoB
+   10  git checkout -b branch1 origin/branch1
+   11  touch fileC.txt
+   12  git add .
+   13  git commit -m '2nd commit to repo B'
+   14  git push origin branch1
+   15  cd ../repoA
+   16  git checkout branch1
+   17  nano fileC.txt 
+   18  git commit -am 'changed fileC in repo A'
+   19  cd ../repoB
+   20  nano fileC.txt 
+   21  git commit -am 'changed fileC in repo B'
+   22  git fetch origin
+   23  git nerge origin/branch1
+   24  git merge origin/branch1
+   25  nano fileC.txt 
+   26  git commit -am 'merge - resolve conflict'
+   27  cd ../repoA
+   28  git remote add new ../repoB
+   29  git pull new branch1
+   30  cd ..
+   31  mkdir git_commands
+   32  cd git_commands/
+   33  history > git_command_list.txt
